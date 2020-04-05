@@ -38,7 +38,7 @@ print_nl() {
 
 test_container_runs_successfully_on_local_repository() {
     print_start "Testing the container runs successfully"
-    docker run -e INPUT_TARGET_BRANCH="GITHUB_TOKEN" \
+    docker run -e INPUT_TARGET_BRANCH="master" \
                -e INPUT_GITHUB_DEPENDENCY_TOKEN="${DEPENDENCY_GITHUB_TOKEN}" \
                -e INPUT_TOKEN="${GITHUB_TOKEN}" \
                -e GITHUB_REPOSITORY="patrickjahns/dependabot-terraform-action" \
