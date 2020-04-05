@@ -28,7 +28,10 @@ end
 package_manager = "terraform"
 
 # Define the target branch
-target_branch = ENV["INPUT_TARGET_BRANCH"] || nil
+target_branch = ENV["INPUT_TARGET_BRANCH"]
+if target_branch.empty?
+  target_branch=nil
+end
 
 # Token to be used for fetching repository files / creating pull requests
 repo_token = ENV["INPUT_TOKEN"]

@@ -11,7 +11,8 @@ LABEL "maintainer"="Patrick Jahns <github@patrickjahns.de>" \
 WORKDIR /usr/src/app
 ENV DEPENDABOT_NATIVE_HELPERS_PATH="/usr/src/app/native-helpers"
 
-ADD ./src /usr/src/app
+COPY ./src /usr/src/app
+COPY ./src/run-action /usr/local/bin/run-action
 RUN apt-get update && \
     apt-get install -y libxml2 libxml2-dev libxslt1-dev build-essential  && \
     apt-get install -y git wget && \
@@ -25,4 +26,4 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /tmp/*
 
-CMD ["bundle", "exec", "./dependabot.rb"]
+CMD ["run-action"]
