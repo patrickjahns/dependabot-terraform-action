@@ -40,18 +40,6 @@ if repo_token.empty?
   exit(1)
 end
 
-# Token to be used for fetching dependencies from github
-dependency_token = ENV["INPUT_GITHUB_DEPENDENCY_TOKEN"]
-
-credentials_dependencies = [
-  {
-    "type" => "git_source",
-    "host" => "github.com",
-    "username" => "x-access-token",
-    "password" => dependency_token
-  }
-]
-
 credentials_repository = [
   {
     "type" => "git_source",
@@ -60,6 +48,23 @@ credentials_repository = [
     "password" => repo_token
   }
 ]
+
+credentials_dependencies = []
+
+# Token to be used for fetching dependencies from github
+dependency_token = ENV["INPUT_GITHUB_DEPENDENCY_TOKEN"]
+unless dependency_token.empty?
+  credentials_dependencies.push(
+    {
+      "type" => "git_source",
+      "host" => "github.com",
+      "username" => "x-access-token",
+      "password" => dependency_token
+    }
+  )
+end
+
+
 
 source = Dependabot::Source.new(
   provider: "github",
