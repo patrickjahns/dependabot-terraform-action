@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-set -eo pipefail
 pushd /usr/src/app > /dev/null
 bundle exec ./dependabot.rb
+exit $?
