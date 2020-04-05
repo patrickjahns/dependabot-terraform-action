@@ -1,0 +1,35 @@
+name: 'terraform-dependabot'
+description: 'Dependency updater for terraform with HCL 2.0 support (based on dependabot)'
+author: 'patrickjahns'
+inputs:
+  directory:
+    description: >
+      Where to look for terraform files to check for dependency upgrades.
+      The directory is relative to the repository's root.
+    default: "/"
+    required: false
+  target_branch:
+    description: >
+      Branch to create pull requests against.
+      By default your repository's default branch is used.
+    required: false
+  token:
+    description: >
+      Auth token used to push the changes back to github and create the pull request with.
+      [Learn more about creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
+    default: ${{ github.token }}
+    required: false
+  github_dependency_token:
+    description: >
+      Auth token used for checking terraform dependencies that are from github repositories.
+      Token requires read access to all modules that you want to automatically check for updates
+      [Learn more about creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
+    default: ${{ github.token }}
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'docker://patrickjahns/dependabot-terraform-action'
+branding:
+  icon: 'package'
+  color: 'orange'
