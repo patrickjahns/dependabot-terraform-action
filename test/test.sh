@@ -46,7 +46,7 @@ test_container_runs_successfully_on_local_repository() {
                --rm ${CONTAINER_IMAGE}:${CONTAINER_SHA}
     retVal=$?
     print_end
-    if [[ ${retVal} -ne 1 ]]; then
+    if [[ ${retVal} -ne 0 ]]; then
       print_error "FAILURE"
       RESULT=1
     else
