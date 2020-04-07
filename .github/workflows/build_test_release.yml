@@ -29,5 +29,5 @@ jobs:
       - name: tag and push current release tag
         if: github.event_name == 'release' &&  github.event.action == 'published'
         run: |
-          docker tag patrickjahns/dependabot-terraform-actionn:${{ github.sha }} patrickjahns/dependabot-terraform-action:${{ github.event.release.tag_name }}
+          docker tag patrickjahns/dependabot-terraform-action:${{ github.sha }} patrickjahns/dependabot-terraform-action:${{ github.event.release.tag_name }}
           docker push patrickjahns/dependabot-terraform-action:${{ github.event.release.tag_name }}
