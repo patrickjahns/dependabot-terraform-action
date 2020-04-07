@@ -15,7 +15,7 @@ The github action was created, as dependabot currently [does not yet officially 
 
 <!-- start usage -->
 ```yaml
-- uses: patrickjahns/depedanbot-terraform-axtion@v1
+- uses: patrickjahns/depedanbot-terraform-action@v1
   with:
     # Where to look for terraform files to check for dependency upgrades.
     # The directory is relative to the repository's root.
