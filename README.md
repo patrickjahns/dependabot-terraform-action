@@ -1,6 +1,7 @@
 # dependabot-terraform-action
 ![Build & Test &  Release](https://github.com/patrickjahns/dependabot-terraform-action/workflows/Build%20&%20Test%20&%20%20Release/badge.svg)
 ![license](https://img.shields.io/github/license/patrickjahns/dependabot-terraform-action)
+[![GitHub tag](https://img.shields.io/github/tag/patrickjahns/dependabot-terraform-action.svg)](https://github.com/patrickjahns/dependabot-terraform-action/tags)
 
 Github action for running dependabot on terraform repositories with HCL 2.0 support
 
