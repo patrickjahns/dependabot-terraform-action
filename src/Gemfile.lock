@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/patrickjahns/dependabot-core
-  revision: de390f394af5b6bc0258899d31ae5d42c2e48998
+  revision: 285f18f1743636b0372873d4aee93ebc27c9925a
   branch: feature_terraform_12
   specs:
     dependabot-bundler (0.117.5)
@@ -75,11 +75,11 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.0)
     aws-eventstream (1.0.3)
-    aws-partitions (1.294.0)
+    aws-partitions (1.295.0)
     aws-sdk-codecommit (1.31.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-core (3.92.0)
+    aws-sdk-core (3.93.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -156,7 +156,7 @@ DEPENDENCIES
   dependabot-terraform!
 
 RUBY VERSION
-   ruby 2.6.5p114
+   ruby 2.6.6p146
 
 BUNDLED WITH
    1.17.2
