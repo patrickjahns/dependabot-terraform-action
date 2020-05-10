@@ -3,7 +3,7 @@ module "public" {
 }
 
 module "private" {
-  source = "git@github.com:patrickjahns/terraform-module-private.git?ref=0.0.0"
+  source = "git@github.com:patrickjahns/terraform-module-private.git?ref=0.0.1"
 }
 
 module "registry_module" {
