@@ -19,6 +19,11 @@ The github action was created, as dependabot currently [does not yet officially 
   with:
     # Where to look for terraform files to check for dependency upgrades.
     # The directory is relative to the repository's root.
+    # Multiple paths can be provided by splitting them with a new line.
+    # Example:
+    #   directory: |
+    #     /path/to/first/module
+    #     /path/to/second/module
     # Default: "/"
     directory: ''
 

@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+set -x
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 CONTAINER_IMAGE=${IMAGE:-"patrickjahns/dependabot-terraform-action"}
 CONTAINER_SHA=${1:-"latest"}
+CURRENT_BRANCH=${2:-"master"}
 RESULT=0
 
 # Colors
@@ -38,7 +41,7 @@ print_nl() {
 
 test_container_runs_successfully_on_local_repository() {
     print_start "Testing the container runs successfully"
-    docker run -e INPUT_TARGET_BRANCH="master" \
+    docker run -e INPUT_TARGET_BRANCH="${CURRENT_BRANCH}" \
                -e INPUT_GITHUB_DEPENDENCY_TOKEN="${DEPENDENCY_GITHUB_TOKEN}" \
                -e INPUT_TOKEN="${GITHUB_TOKEN}" \
                -e GITHUB_REPOSITORY="patrickjahns/dependabot-terraform-action" \
@@ -55,10 +58,30 @@ test_container_runs_successfully_on_local_repository() {
     print_nl
 }
 
+test_container_runs_successfully_on_local_repository_with_multiple_dirs() {
+    print_start "Testing the container runs successfully"
+    docker run -e INPUT_TARGET_BRANCH="${CURRENT_BRANCH}" \
+               -e INPUT_GITHUB_DEPENDENCY_TOKEN="${DEPENDENCY_GITHUB_TOKEN}" \
+               -e INPUT_TOKEN="${GITHUB_TOKEN}" \
+               -e GITHUB_REPOSITORY="patrickjahns/dependabot-terraform-action" \
+               -e INPUT_DIRECTORY="/test/terraform\n/test/second" \
+               --rm ${CONTAINER_IMAGE}:${CONTAINER_SHA}
+    retVal=$?
+    print_end
+    if [[ ${retVal} -ne 0 ]]; then
+      print_error "FAILURE"
+      RESULT=1
+    else
+      print_success "SUCCESS"
+    fi
+    print_nl
+}
+
 main() {
     print_default "Starting test suite .."
     pushd $SCRIPT_DIR > /dev/null
         test_container_runs_successfully_on_local_repository
+        test_container_runs_successfully_on_local_repository_with_multiple_dirs
     popd > /dev/null
     if [[ ${RESULT} -ne 0 ]]; then
       print_error "FAILURE"
