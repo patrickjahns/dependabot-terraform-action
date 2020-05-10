@@ -156,7 +156,7 @@ directory.split("\n").each do |dir|
   source = Dependabot::Source.new(
     provider: "github",
     repo: repo_name,
-    directory: dir,
+    directory: dir.strip!,
     branch: target_branch,
   )
   update source, credentials_repository, credentials_dependencies
