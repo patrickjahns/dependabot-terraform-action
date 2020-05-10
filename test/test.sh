@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 CONTAINER_IMAGE=${IMAGE:-"patrickjahns/dependabot-terraform-action"}
 CONTAINER_SHA=${1:-"latest"}
