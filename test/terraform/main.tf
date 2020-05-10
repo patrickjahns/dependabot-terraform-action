@@ -8,5 +8,5 @@ module "private" {
 
 module "registry_module" {
   source  = "vancluever/module/null"
-  version = "1.0.0"
+  version = "1.0.4"
 }
