@@ -1,5 +1,5 @@
 module "public" {
-  source = "git@github.com:patrickjahns/terraform-module-public.git?ref=0.0.0"
+  source = "git@github.com:patrickjahns/terraform-module-public.git?ref=0.1.0"
 }
 
 module "private" {
