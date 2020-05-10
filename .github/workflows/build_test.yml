@@ -13,7 +13,7 @@ jobs:
       - name: build container
         run: docker build -t patrickjahns/dependabot-terraform-action:${{ github.sha }} .
       - name: test container
-        run: test/test.sh ${{ github.sha }}
+        run: test/test.sh ${{ github.sha }} feature_multiple_paths
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEPENDENCY_GITHUB_TOKEN: ${{ secrets.DEPENDENCY_GITHUB_TOKEN }}

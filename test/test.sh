@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+set -x
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 CONTAINER_IMAGE=${IMAGE:-"patrickjahns/dependabot-terraform-action"}
 CONTAINER_SHA=${1:-"latest"}
+CURRENT_BRANCH=${2:-"master"}
 RESULT=0
 
 # Colors
@@ -38,7 +41,7 @@ print_nl() {
 
 test_container_runs_successfully_on_local_repository() {
     print_start "Testing the container runs successfully"
-    docker run -e INPUT_TARGET_BRANCH="master" \
+    docker run -e INPUT_TARGET_BRANCH="${CURRENT_BRANCH}" \
                -e INPUT_GITHUB_DEPENDENCY_TOKEN="${DEPENDENCY_GITHUB_TOKEN}" \
                -e INPUT_TOKEN="${GITHUB_TOKEN}" \
                -e GITHUB_REPOSITORY="patrickjahns/dependabot-terraform-action" \
@@ -57,7 +60,7 @@ test_container_runs_successfully_on_local_repository() {
 
 test_container_runs_successfully_on_local_repository_with_multiple_dirs() {
     print_start "Testing the container runs successfully"
-    docker run -e INPUT_TARGET_BRANCH="master" \
+    docker run -e INPUT_TARGET_BRANCH="${CURRENT_BRANCH}" \
                -e INPUT_GITHUB_DEPENDENCY_TOKEN="${DEPENDENCY_GITHUB_TOKEN}" \
                -e INPUT_TOKEN="${GITHUB_TOKEN}" \
                -e GITHUB_REPOSITORY="patrickjahns/dependabot-terraform-action" \
