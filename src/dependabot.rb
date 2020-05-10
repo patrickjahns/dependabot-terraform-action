@@ -151,12 +151,13 @@ end
 
 puts "  - Fetching dependency files for #{repo_name}"
 directory.split("\n").each do |dir|
+  dir = dir.strip!
   puts "  - Checking #{dir} ..."
 
   source = Dependabot::Source.new(
     provider: "github",
     repo: repo_name,
-    directory: dir.strip!,
+    directory: dir,
     branch: target_branch,
   )
   update source, credentials_repository, credentials_dependencies
