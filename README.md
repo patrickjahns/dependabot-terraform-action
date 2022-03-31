@@ -8,8 +8,6 @@ Github action for running dependabot on terraform repositories with HCL 2.0 supp
 ## Introduction
 
 This action provides the functionality of [dependabot](https://github.com/dependabot/) for updating terraform files that utilize the HCL 2.0 ( terraform 0.12 ) syntax.
-The github action was created, as dependabot currently [does not yet officially support HCL 2.0](https://github.com/dependabot/dependabot-core/issues/1176), however the community [already started work](https://github.com/dependabot/dependabot-core/pull/1388) on this.
-
 
 ## Usage
 
